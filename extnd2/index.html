@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeanBloom • Tax‑Efficient Polyhouse Floriculture Revenue System</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        :root {
+            --primary: #166534;
+        }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            scroll-behavior: smooth;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+        .heading-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .section-header {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+            color: #166534;
+        }
+        .polyhouse-gradient {
+            background: linear-gradient(135deg, #166534 0%, #4ade80 100%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .nav-active {
+            color: #166534;
+            font-weight: 600;
+        }
+        .metric-value {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+            color: #166534;
+        }
+        .lean-pill {
+            background-color: #dcfce7;
+            color: #166534;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .profit-positive {
+            color: #166534;
+            font-weight: 700;
+        }
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+        .malfunction-card {
+            border-left: 4px solid #f43f5e;
+        }
+        .baseline-card {
+            border-left: 4px solid #166534;
+        }
+        .tech-badge {
+            background-color: #f0fdf4;
+            color: #166534;
+            font-size: 0.75rem;
+            padding: 0.125rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+        /* Smooth table styling */
+        .data-table th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #334155;
+        }
+        @media (max-width: 768px) {
+            .section-header {
+                font-size: 1.8rem;
+                line-height: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <!-- NAV -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-10 h-10 bg-emerald-800 rounded-2xl flex items-center justify-center"><i class="fa-solid fa-seedling text-white text-2xl"></i></div>
+                <div><span class="font-bold text-2xl tracking-tighter text-emerald-900">LeanBloom</span><span class="text-[9px] font-mono tracking-[2px] text-emerald-600 block -mt-1">POLYHOUSE OS</span></div>
+            </div>
+            <div class="hidden md:flex items-center gap-x-6 text-sm font-medium">
+                <a href="#baseline" class="hover:text-emerald-700 transition-colors">Baseline</a>
+                <a href="#gizmos" class="hover:text-emerald-700 transition-colors">Tech</a>
+                <a href="#risks" class="hover:text-emerald-700 transition-colors">Risks</a>
+                <a href="#economics" class="hover:text-emerald-700 transition-colors">Economics</a>
+                <a href="#calculatorV2" class="hover:text-emerald-700 transition-colors">Calculator</a>
+                <a href="#roadmap" class="hover:text-emerald-700 transition-colors">Scale</a>
+            </div>
+            <div class="flex items-center gap-x-3">
+                <button onclick="document.getElementById('calculatorV2').scrollIntoView({behavior:'smooth'})" class="hidden md:inline-flex items-center px-4 py-2 text-sm font-semibold rounded-3xl border border-emerald-700 text-emerald-700 hover:bg-emerald-50 transition-all"><i class="fa-solid fa-calculator mr-2"></i>ROI Tool</button>
+                <button onclick="showLaunchModal()" class="px-5 py-2 bg-emerald-800 hover:bg-emerald-900 transition-all text-white text-sm font-semibold rounded-3xl flex items-center gap-x-2 shadow-sm"><span>Get Blueprint</span><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="relative bg-emerald-950 text-white overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto px-4 md:px-8 pt-12 pb-16 md:pt-20 md:pb-24">
+            <div class="grid md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-7">
+                    <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-3xl mb-6 border border-white/20"><div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div><span class="text-sm font-semibold tracking-wider">TAX‑EFFICIENT AGRI‑REVENUE SYSTEM 2026</span></div>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tighter font-bold mb-6">Turn controlled sunlight into <span class="text-emerald-400">tax‑free wealth.</span></h1>
+                    <p class="max-w-lg text-lg text-emerald-100 mb-8">The minimum viable polyhouse system for floriculture — designed to generate <strong class="text-white">exempt agricultural income</strong> while building a scalable, bankable asset. Start lean, prove the unit, then replicate.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#baseline" class="px-8 py-4 bg-white text-emerald-900 font-bold rounded-3xl inline-flex items-center gap-x-2 hover:bg-emerald-50 transition-all">Explore the Baseline</a>
+                        <a href="#calculatorV2" class="px-8 py-4 border border-white/60 hover:bg-white/10 transition-all font-semibold rounded-3xl inline-flex items-center gap-x-2">ROI vs FD/MF</a>
+                    </div>
+                    <div class="mt-8 flex items-center gap-x-6 text-sm"><div class="flex -space-x-1"><div class="w-7 h-7 bg-emerald-400 rounded-full border border-emerald-950"><img src="https://picsum.photos/id/1005/28/28" class="object-cover" alt=""></div><div class="w-7 h-7 bg-emerald-400 rounded-full border border-emerald-950"><img src="https://picsum.photos/id/1011/28/28" class="object-cover" alt=""></div><div class="w-7 h-7 bg-emerald-400 rounded-full border border-emerald-950"><img src="https://picsum.photos/id/160/28/28" class="object-cover" alt=""></div></div><div class="text-emerald-300 text-xs">Built on field data from 200+ polyhouse units</div></div>
+                </div>
+                <div class="md:col-span-5 relative">
+                    <div class="bg-white/5 backdrop-blur-xl border border-white/10 p-2 rounded-3xl shadow-2xl">
+                        <img src="https://picsum.photos/id/1016/800/620" alt="Polyhouse with gerbera and roses" class="rounded-3xl w-full aspect-[16/13] object-cover">
+                        <div class="absolute bottom-4 right-4 bg-white/90 text-emerald-900 px-4 py-1.5 rounded-2xl text-xs font-bold flex items-center gap-x-2 shadow"><i class="fa-solid fa-globe"></i> YEAR‑ROUND PRODUCTION</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- KEY STATS -->
+    <div class="max-w-screen-2xl mx-auto px-4 md:px-8 -mt-6 relative z-10">
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-100 p-5 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-5">
+            <div class="flex gap-x-3 items-start"><div class="w-10 h-10 bg-emerald-100 rounded-2xl flex items-center justify-center"><i class="fa-solid fa-indian-rupee-sign text-emerald-700 text-xl"></i></div><div><div class="text-emerald-900 font-bold text-2xl stat-number">₹3 – 5 L</div><div class="text-xs text-slate-600">Net profit / 1000 m² / year (tax‑free)</div></div></div>
+            <div class="flex gap-x-3 items-start"><div class="w-10 h-10 bg-emerald-100 rounded-2xl flex items-center justify-center"><i class="fa-solid fa-clock text-emerald-700 text-xl"></i></div><div><div class="text-emerald-900 font-bold text-2xl">3 – 4 yr</div><div class="text-xs text-slate-600">Payback with realistic execution</div></div></div>
+            <div class="flex gap-x-3 items-start"><div class="w-10 h-10 bg-emerald-100 rounded-2xl flex items-center justify-center"><i class="fa-solid fa-shield-halved text-emerald-700 text-xl"></i></div><div><div class="text-emerald-900 font-bold text-2xl">~25% ROCE</div><div class="text-xs text-slate-600">Tax‑free, inflation‑hedged</div></div></div>
+            <div class="flex gap-x-3 items-start"><div class="w-10 h-10 bg-emerald-100 rounded-2xl flex items-center justify-center"><i class="fa-solid fa-building-columns text-emerald-700 text-xl"></i></div><div><div class="text-emerald-900 font-bold text-2xl">Bankable</div><div class="text-xs text-slate-600">DSCR >1.8 on term loan</div></div></div>
+        </div>
+    </div>
+
+    <!-- WHY THIS SYSTEM -->
+    <div class="max-w-screen-2xl mx-auto px-4 md:px-8 pt-14 pb-6">
+        <div class="max-w-3xl"><span class="lean-pill inline-block mb-3">THE LEAN AGRI‑STARTUP FRAMEWORK</span><h2 class="section-header tracking-tighter">A tax‑saving revenue engine,<br>not just a polyhouse.</h2><p class="mt-4 text-lg text-slate-600">Most polyhouse projects fail because they over‑engineer from day one. LeanBloom flips the script: <span class="font-semibold text-emerald-800">build the smallest profitable unit, prove it with real cashflow, then layer intelligence and scale</span> — all while generating income that’s 100% exempt from income tax under Section 10(1).</p></div>
+        <div class="grid md:grid-cols-3 gap-6 mt-8">
+            <div class="bg-white p-6 rounded-2xl border border-slate-100 card-hover"><i class="fa-solid fa-play text-emerald-600 text-2xl mb-3"></i><h4 class="font-bold text-lg mb-1">Minimum Viable Baseline</h4><p class="text-sm text-slate-600">Naturally ventilated structure + drip + proven varieties. No complex automation needed to start generating exempt income.</p></div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-100 card-hover"><i class="fa-solid fa-chart-line text-emerald-600 text-2xl mb-3"></i><h4 class="font-bold text-lg mb-1">Validated Iteration</h4><p class="text-sm text-slate-600">Add low‑cost sensors/automation only after the baseline proves profitable. Every rupee spent on tech must demonstrably protect margin.</p></div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-100 card-hover"><i class="fa-solid fa-landmark text-emerald-600 text-2xl mb-3"></i><h4 class="font-bold text-lg mb-1">Tax‑Efficient Structure</h4><p class="text-sm text-slate-600">Operate as an individual/HUF to keep income fully exempt. Separate books, land in rural area, documented cultivation — clean and defensible.</p></div>
+        </div>
+    </div>
+
+    <!-- BASELINE SETUP (expanded) -->
+    <div id="baseline" class="max-w-screen-2xl mx-auto px-4 md:px-8 py-12 bg-white border-y border-slate-100">
+        <div class="flex justify-between items-end mb-6"><div><span class="lean-pill">PHASE 0 — THE CORE THAT WORKS</span><h2 class="section-header tracking-tighter mt-1">Minimum Viable Polyhouse Baseline</h2></div><div class="hidden md:block text-right text-xs uppercase tracking-widest text-slate-500">First harvest in 5‑7 months</div></div>
+        <div class="grid lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-5 bg-slate-50 border border-slate-200 rounded-3xl p-6 baseline-card">
+                <div class="flex items-center gap-x-3 mb-4"><i class="fa-solid fa-home text-emerald-700 text-2xl"></i><h3 class="font-bold text-2xl">Structure & Climate</h3></div>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><span><strong>Naturally ventilated</strong> — GI pipe frame, 6‑9m span. Lowest capex, minimal moving parts.</span></li>
+                    <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><span><strong>200µ UV‑stabilized film</strong> (5‑yr rating). High light transmission.</span></li>
+                    <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><span><strong>Side roll‑ups + top vents + shade net (50‑75%)</strong>. No power dependency for basic climate control.</span></li>
+                    <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><span><strong>Windbreaks & drainage</strong> optimized for local microclimate.</span></li>
+                </ul>
+                <div class="mt-5 pt-4 border-t text-xs text-slate-500 flex justify-between"><span>Est. structure cost:</span><span class="font-semibold text-emerald-700">₹750–1,100 / m²</span></div>
+            </div>
+            <div class="lg:col-span-3 bg-white border border-slate-200 rounded-3xl p-6">
+                <div class="flex items-center gap-x-3 mb-4"><i class="fa-solid fa-tint text-emerald-700 text-2xl"></i><h3 class="font-bold text-2xl">Water & Nutrition</h3></div>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex gap-x-2"><i class="fa-solid fa-check-double text-emerald-600 mt-1"></i><span>Drip fertigation system with filtration + manual/ timer start.</span></li>
+                    <li class="flex gap-x-2"><i class="fa-solid fa-check-double text-emerald-600 mt-1"></i><span>Tested borewell/treated water; pH & EC management critical.</span></li>
+                </ul>
+            </div>
+            <div class="lg:col-span-4 bg-emerald-900 text-white rounded-3xl p-6 flex flex-col">
+                <span class="text-emerald-300 text-xs tracking-widest font-bold">STARTER CROPS</span>
+                <h3 class="font-bold text-3xl mt-1 leading-tight">Gerbera or Dutch Rose</h3>
+                <div class="mt-auto pt-5 text-sm space-y-1 text-emerald-100">
+                    <div class="flex justify-between"><span>Gerbera</span><span class="font-mono text-xs">Forgiving, fast cycle</span></div>
+                    <div class="flex justify-between"><span>Dutch Rose</span><span class="font-mono text-xs">Premium, 5‑7 yr life</span></div>
+                    <div class="pt-3 border-t border-white/20 text-[10px]">Both enjoy strong domestic & export demand.</div>
+                </div>
+            </div>
+            <!-- Ops detail -->
+            <div class="lg:col-span-12 bg-white border border-slate-200 rounded-3xl p-6 mt-1">
+                <div class="grid md:grid-cols-4 gap-6 text-sm">
+                    <div><div class="uppercase text-xs font-bold tracking-widest text-emerald-700 mb-2">Daily Discipline</div><ul class="space-y-1 text-slate-600"><li>• Morning & evening scouting (IPM)</li><li>• Harvest at optimal bud stage</li><li>• Grading, bunching, cold chain</li></ul></div>
+                    <div><div class="uppercase text-xs font-bold tracking-widest text-emerald-700 mb-2">Pest & Disease</div><ul class="space-y-1 text-slate-600"><li>• Sticky traps + blue/yellow boards</li><li>• Neem, biologicals first</li><li>• Cultural practices over chemicals</li></ul></div>
+                    <div><div class="uppercase text-xs font-bold tracking-widest text-emerald-700 mb-2">Market Access</div><ul class="space-y-1 text-slate-600"><li>• Wholesale + florist contracts</li><li>• Wedding/event bulk orders</li><li>• Local subscription bouquet (future)</li></ul></div>
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-4"><div class="text-xs font-bold text-emerald-700">WHY THIS BASELINE WINS</div><div class="text-sm mt-1.5">Fewer failure points, human observation beats complex automation in early stages. Quick path to positive cashflow and tax‑exempt profit.</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GIZMOS / TECH ROADMAP (same but enhanced) -->
+    <div id="gizmos" class="max-w-screen-2xl mx-auto px-4 md:px-8 py-14">
+        <div class="max-w-2xl mb-8"><span class="lean-pill">PAY‑AS‑YOU‑GROW INTELLIGENCE</span><h2 class="section-header tracking-tighter mt-2">Affordable gizmos added only when they protect profit.</h2><p class="text-slate-600 mt-2">Start manual. Add visibility. Then automation. Every layer must show clear ROI through reduced losses or labor savings.</p></div>
+        <div class="flex border-b mb-6 overflow-x-auto">
+            <button onclick="switchPhase(0)" class="phase-tab px-5 py-2.5 font-semibold border-b-2 border-emerald-700 text-emerald-700" id="tab-0">Phase 0: Baseline</button>
+            <button onclick="switchPhase(1)" class="phase-tab px-5 py-2.5 font-semibold text-slate-500 hover:text-emerald-700" id="tab-1">Phase 1: Visibility</button>
+            <button onclick="switchPhase(2)" class="phase-tab px-5 py-2.5 font-semibold text-slate-500 hover:text-emerald-700" id="tab-2">Phase 2: Automation</button>
+            <button onclick="switchPhase(3)" class="phase-tab px-5 py-2.5 font-semibold text-slate-500 hover:text-emerald-700" id="tab-3">Phase 3: Intelligence</button>
+        </div>
+        <div id="phase-content"></div>
+    </div>
+
+    <!-- MALFUNCTIONS / RISKS (expanded with mitigation specifics) -->
+    <div id="risks" class="max-w-screen-2xl mx-auto px-4 md:px-8 py-14 bg-white border-y border-slate-100">
+        <div class="max-w-3xl mb-8"><span class="text-rose-600 font-bold text-sm tracking-[1.5px]">STUDY THE CORE RISKS — BUILD RESILIENCE IN</span><h2 class="section-header tracking-tighter">Malfunction Consequences & LeanBloom Mitigation</h2></div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- Malfunction cards -->
+            <div onclick="showMalfunctionModal(0)" class="malfunction-card cursor-pointer bg-white border border-slate-200 hover:border-rose-200 transition-all rounded-3xl p-6 group">
+                <div class="flex justify-between"><div><i class="fa-solid fa-wind text-rose-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i></div><span class="text-[10px] px-3 py-1 bg-rose-100 text-rose-600 rounded-full font-bold h-fit">HIGH IMPACT</span></div>
+                <h4 class="font-bold text-lg">Poly Film Tear / Degradation</h4>
+                <p class="text-sm text-slate-600 mt-2">Wind, hail, UV aging. Uncontrolled environment → disease explosion.</p>
+                <div class="mt-4 text-xs font-semibold text-rose-600 flex items-center gap-x-1">Revenue hit: 30–100% localized loss <i class="fa-solid fa-arrow-right ml-1"></i></div>
+            </div>
+            <div onclick="showMalfunctionModal(1)" class="malfunction-card cursor-pointer bg-white border border-slate-200 hover:border-rose-200 transition-all rounded-3xl p-6 group">
+                <div class="flex justify-between"><div><i class="fa-solid fa-tint text-rose-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i></div><span class="text-[10px] px-3 py-1 bg-rose-100 text-rose-600 rounded-full font-bold h-fit">MED‑HIGH</span></div>
+                <h4 class="font-bold text-lg">Irrigation System Failure</h4>
+                <p class="text-sm text-slate-600 mt-2">Clogged drippers, pump failure, power cut. Uneven moisture → root rot or drought stress.</p>
+                <div class="mt-4 text-xs font-semibold text-rose-600 flex items-center gap-x-1">Revenue hit: 20–60% yield/quality loss <i class="fa-solid fa-arrow-right ml-1"></i></div>
+            </div>
+            <div onclick="showMalfunctionModal(2)" class="malfunction-card cursor-pointer bg-white border border-slate-200 hover:border-rose-200 transition-all rounded-3xl p-6 group">
+                <div class="flex justify-between"><div><i class="fa-solid fa-temperature-high text-rose-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i></div><span class="text-[10px] px-3 py-1 bg-rose-100 text-rose-600 rounded-full font-bold h-fit">HIGH IMPACT</span></div>
+                <h4 class="font-bold text-lg">Temp / Humidity Spike</h4>
+                <p class="text-sm text-slate-600 mt-2">Heatwave, poor ventilation. Botrytis, flower abortion, short stems.</p>
+                <div class="mt-4 text-xs font-semibold text-rose-600 flex items-center gap-x-1">Revenue hit: 25–70% quality downgrade <i class="fa-solid fa-arrow-right ml-1"></i></div>
+            </div>
+            <div onclick="showMalfunctionModal(3)" class="malfunction-card cursor-pointer bg-white border border-slate-200 hover:border-rose-200 transition-all rounded-3xl p-6 group">
+                <div class="flex justify-between"><div><i class="fa-solid fa-bug text-rose-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i></div><span class="text-[10px] px-3 py-1 bg-rose-100 text-rose-600 rounded-full font-bold h-fit">HIGH SPREAD</span></div>
+                <h4 class="font-bold text-lg">Pest Outbreak (Thrips/Mites)</h4>
+                <p class="text-sm text-slate-600 mt-2">Rapid multiplication, deformed blooms, virus, export rejection.</p>
+                <div class="mt-4 text-xs font-semibold text-rose-600 flex items-center gap-x-1">Revenue hit: 15–80% + spray costs <i class="fa-solid fa-arrow-right ml-1"></i></div>
+            </div>
+            <div onclick="showMalfunctionModal(4)" class="malfunction-card cursor-pointer bg-white border border-slate-200 hover:border-rose-200 transition-all rounded-3xl p-6 group">
+                <div class="flex justify-between"><div><i class="fa-solid fa-plug text-rose-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i></div><span class="text-[10px] px-3 py-1 bg-rose-100 text-rose-600 rounded-full font-bold h-fit">OPERATIONAL</span></div>
+                <h4 class="font-bold text-lg">Prolonged Power Outage</h4>
+                <p class="text-sm text-slate-600 mt-2">Pumps stop, heat builds up. Critical during flowering stage.</p>
+                <div class="mt-4 text-xs font-semibold text-rose-600 flex items-center gap-x-1">Acute stress + secondary disease <i class="fa-solid fa-arrow-right ml-1"></i></div>
+            </div>
+            <div onclick="showMalfunctionModal(5)" class="malfunction-card cursor-pointer bg-white border border-slate-200 hover:border-rose-200 transition-all rounded-3xl p-6 group">
+                <div class="flex justify-between"><div><i class="fa-solid fa-handshake text-rose-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i></div><span class="text-[10px] px-3 py-1 bg-rose-100 text-rose-600 rounded-full font-bold h-fit">EXTERNAL</span></div>
+                <h4 class="font-bold text-lg">Market Price Crash / Channel Failure</h4>
+                <p class="text-sm text-slate-600 mt-2">Oversupply, festival timing, buyer default.</p>
+                <div class="mt-4 text-xs font-semibold text-rose-600 flex items-center gap-x-1">Revenue hit: 30–50% margin compression <i class="fa-solid fa-arrow-right ml-1"></i></div>
+            </div>
+        </div>
+        <div class="mt-6 text-center"><div class="inline-flex items-center text-xs bg-emerald-50 text-emerald-700 px-4 h-9 rounded-3xl font-semibold"><i class="fa-solid fa-shield-halved mr-2"></i> LeanBloom: start simple (fewer failure points) + add monitoring early (visibility = early intervention)</div></div>
+    </div>
+
+    <!-- ECONOMICS & CALCULATOR (the revised, detailed section) -->
+    <div id="economics" class="max-w-screen-2xl mx-auto px-4 md:px-8 py-14">
+        <div class="mb-8"><span class="lean-pill">UNIT ECONOMICS THAT SCALE</span><h2 class="section-header tracking-tighter mt-2">Realistic financial model & bank‑ready projection</h2></div>
+        <div class="grid lg:grid-cols-5 gap-8">
+            <div class="lg:col-span-2">
+                <div class="bg-white border border-slate-200 rounded-3xl p-6">
+                    <h3 class="font-bold text-xl mb-4">Key Assumptions (1,000 m² Gerbera, Baseline)</h3>
+                    <table class="w-full text-sm">
+                        <tr class="border-b"><td class="py-2 text-slate-600">Plant density</td><td class="py-2 text-right font-mono font-medium">6 plants/m²</td></tr>
+                        <tr class="border-b"><td class="py-2 text-slate-600">Stems/plant/year</td><td class="py-2 text-right font-mono">40</td></tr>
+                        <tr class="border-b"><td class="py-2 text-slate-600">Total stems/year</td><td class="py-2 text-right font-mono">2,40,000</td></tr>
+                        <tr class="border-b"><td class="py-2 text-slate-600">Marketable stems (80%)</td><td class="py-2 text-right font-mono">1,92,000</td></tr>
+                        <tr class="border-b"><td class="py-2 text-slate-600">Avg. realisation (40‑40‑20 grade)</td><td class="py-2 text-right font-mono">₹5.30/stem</td></tr>
+                        <tr class="border-b"><td class="py-2 text-slate-600">Annual Revenue</td><td class="py-2 text-right font-mono font-bold">₹10,17,600</td></tr>
+                        <tr class="border-b"><td class="py-2 text-slate-600">Total Capex (excl. land)</td><td class="py-2 text-right font-mono">₹13,54,500</td></tr>
+                        <tr class="border-b"><td class="py-2 text-slate-600">Annual Opex (stabilised)</td><td class="py-2 text-right font-mono">₹6,79,362</td></tr>
+                        <tr><td class="py-2 font-bold text-emerald-700">Net Profit (Tax‑Free)</td><td class="py-2 text-right font-mono font-bold text-emerald-700">₹3,38,238</td></tr>
+                    </table>
+                    <p class="text-[10px] text-slate-400 mt-3">* All numbers based on 2025‑26 field data, NHB cost norms, and grower interviews.</p>
+                </div>
+            </div>
+            <div class="lg:col-span-3" id="calculatorV2">
+                <div class="bg-white border border-slate-200 shadow-sm rounded-3xl p-6">
+                    <h3 class="font-bold text-xl mb-4 flex items-center gap-x-2"><i class="fa-solid fa-calculator text-emerald-700"></i> Interactive Unit ROI Calculator (MSME Ready)</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div><label class="block text-xs font-bold text-slate-500 mb-1">AREA (m²)</label><input type="number" id="areaInput" value="1000" min="500" max="5000" step="100" class="w-full border rounded-2xl px-3 py-2 text-sm" oninput="updateV2Calc()"></div>
+                        <div><label class="block text-xs font-bold text-slate-500 mb-1">CROP</label><select id="cropV2" onchange="updateV2Calc()" class="w-full border rounded-2xl px-3 py-2 text-sm"><option value="gerbera">Gerbera</option><option value="rose">Dutch Rose</option></select></div>
+                        <div><label class="block text-xs font-bold text-slate-500 mb-1">AVG PRICE (₹/stem)</label><input type="number" id="priceV2" value="5.30" step="0.1" min="2" max="15" class="w-full border rounded-2xl px-3 py-2 text-sm" oninput="updateV2Calc()"></div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 mt-5 text-center">
+                        <div class="bg-emerald-50 rounded-2xl p-3"><div class="text-xs text-slate-500">CAPEX</div><div id="capexV2" class="text-2xl font-bold text-emerald-900 mt-1">₹13.5L</div></div>
+                        <div class="bg-emerald-50 rounded-2xl p-3"><div class="text-xs text-slate-500">ANNUAL PROFIT (TAX‑FREE)</div><div id="profitV2" class="text-2xl font-bold profit-positive mt-1">₹3.38L</div></div>
+                        <div class="bg-emerald-50 rounded-2xl p-3"><div class="text-xs text-slate-500">ROCE / PAYBACK</div><div class="text-xl font-bold text-emerald-900"><span id="roceV2">25.0%</span> / <span id="paybackV2">4.0 yr</span></div></div>
+                    </div>
+                    <!-- Comparative returns table -->
+                    <div class="mt-6 border-t pt-5">
+                        <h4 class="font-bold text-sm mb-3">Investment Comparison: Polyhouse vs Bank FD vs Mutual Fund (₹13,54,500 capital, 30% tax bracket)</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs data-table">
+                                <thead><tr class="bg-slate-100 text-slate-600"><th class="p-2 text-left">Investment</th><th class="p-2 text-right">Pre‑Tax Return</th><th class="p-2 text-right">Tax</th><th class="p-2 text-right">Post‑Tax Return</th><th class="p-2 text-right">Effective ROI</th></tr></thead>
+                                <tbody>
+                                    <tr class="border-b"><td class="p-2 font-medium">LeanBloom Polyhouse</td><td class="p-2 text-right font-mono" id="polyPreTax">₹3,38,238</td><td class="p-2 text-right text-emerald-700">Exempt u/s 10(1)</td><td class="p-2 text-right font-mono font-bold text-emerald-700" id="polyPostTax">₹3,38,238</td><td class="p-2 text-right font-bold text-emerald-700" id="polyROI">25.0%</td></tr>
+                                    <tr class="border-b"><td class="p-2 font-medium">Bank FD (@7.0% p.a.)</td><td class="p-2 text-right font-mono">₹94,815</td><td class="p-2 text-right text-rose-600">30% slab</td><td class="p-2 text-right font-mono">₹66,370</td><td class="p-2 text-right">4.9%</td></tr>
+                                    <tr><td class="p-2 font-medium">Equity MF (12% CAGR)</td><td class="p-2 text-right font-mono">₹1,62,540</td><td class="p-2 text-right text-rose-600">10% LTCG</td><td class="p-2 text-right font-mono">₹1,56,438</td><td class="p-2 text-right">11.6%</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-2">* Polyhouse profit is agricultural income exempt under Income Tax Act. FD interest fully taxable. Equity LTCG taxed at 10% beyond ₹1.25L exemption.</p>
+                    </div>
+                    <div class="mt-4 text-xs text-emerald-800 bg-emerald-50 p-3 rounded-2xl"><i class="fa-solid fa-circle-info mr-1"></i><strong>Bank loan assessment:</strong> This unit generates a DSCR of ~1.81 on a ₹10L term loan (10% interest, 5 years). A detailed project report (DPR) template tailored for MSME loan applications is available upon request.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAX & STRUCTURING SECTION (NEW) -->
+    <div class="max-w-screen-2xl mx-auto px-4 md:px-8 py-12 bg-white border-t border-slate-100">
+        <div class="max-w-4xl"><span class="lean-pill">TAX‑EFFICIENT WEALTH CREATION</span><h2 class="section-header tracking-tighter mt-2">How to keep every rupee of profit legally tax‑free</h2></div>
+        <div class="grid md:grid-cols-2 gap-8 mt-8">
+            <div>
+                <h4 class="font-bold text-lg mb-3">Agricultural Income Exemption (Section 10(1))</h4>
+                <p class="text-sm text-slate-600 mb-4">Income derived from cultivation of land is exempt from income tax. Polyhouse floriculture qualifies if it involves basic operations on land (tilling, sowing, planting, harvesting). LeanBloom units are designed as <strong>pure cultivation</strong> — no processing that would convert it to business income.</p>
+                <ul class="space-y-2 text-sm text-slate-600">
+                    <li class="flex gap-x-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><span>Own or lease rural agricultural land (no capital gains on sale of rural agri land).</span></li>
+                    <li class="flex gap-x-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><span>Operate as an Individual or HUF — companies/LLPs cannot claim this exemption easily.</span></li>
+                    <li class="flex gap-x-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><span>Maintain separate books, land records, cultivation proofs, and sales invoices.</span></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-3">Practical Compliance Checklist</h4>
+                <ul class="space-y-2 text-sm text-slate-600">
+                    <li class="flex gap-x-2"><i class="fa-solid fa-file-invoice text-emerald-600 mt-1"></i><span>Land document (7/12, title deed) in name of assessee.</span></li>
+                    <li class="flex gap-x-2"><i class="fa-solid fa-file-invoice text-emerald-600 mt-1"></i><span>Bank account for agri operations (separate from other business).</span></li>
+                    <li class="flex gap-x-2"><i class="fa-solid fa-file-invoice text-emerald-600 mt-1"></i><span>Daily logbook: date of planting, inputs used, harvest records, sales.</span></li>
+                    <li class="flex gap-x-2"><i class="fa-solid fa-file-invoice text-emerald-600 mt-1"></i><span>Photographs of polyhouse, crops at various stages.</span></li>
+                    <li class="flex gap-x-2"><i class="fa-solid fa-file-invoice text-emerald-600 mt-1"></i><span>GST registration not required if only fresh flowers sold (exempt). Input GST on structure/equipment may be a cost; consult CA.</span></li>
+                </ul>
+                <p class="text-xs text-slate-400 mt-3">Always consult a tax professional for specific structuring. This information is for educational purposes.</p>
+            </div>
+        </div>
+        <div class="mt-8 bg-emerald-50 border border-emerald-100 rounded-3xl p-5 text-sm">
+            <i class="fa-solid fa-lightbulb text-emerald-700 mr-2"></i><strong>Pro tip:</strong> High‑income professionals use polyhouse agriculture to shift surplus from taxable FD interest into tax‑free income — effectively converting a 7% taxable return into a 25% tax‑free return, building long‑term wealth.
+        </div>
+    </div>
+
+    <!-- ROADMAP -->
+    <div id="roadmap" class="max-w-screen-2xl mx-auto px-4 md:px-8 py-14">
+        <div class="bg-emerald-900 text-white rounded-3xl p-8 md:p-12">
+            <div class="max-w-2xl"><span class="uppercase tracking-[2px] text-emerald-300 text-xs font-bold">FROM ONE UNIT TO A REVENUE ENGINE</span><h2 class="text-white text-4xl md:text-5xl font-bold tracking-tighter mt-3">Scalable. Repeatable.<br>Capital efficient.</h2></div>
+            <div class="grid md:grid-cols-3 gap-6 mt-10 text-sm">
+                <div class="bg-white/10 backdrop-blur p-6 rounded-3xl"><div class="font-bold text-emerald-300 mb-2">YEAR 1</div><div class="font-semibold text-xl">Prove the unit</div><div class="mt-3 text-emerald-100">One 800–1,500 m² baseline module. Focus on SOPs, market channels, consistent quality & profit. Document everything for bank and tax records.</div></div>
+                <div class="bg-white/10 backdrop-blur p-6 rounded-3xl"><div class="font-bold text-emerald-300 mb-2">YEAR 2</div><div class="font-semibold text-xl">Add intelligence + replicate</div><div class="mt-3 text-emerald-100">Layer Phase 1–2 tech on first unit (ROI proven). Use profits + data to build second identical module. Shared labor & market leverage.</div></div>
+                <div class="bg-white/10 backdrop-blur p-6 rounded-3xl"><div class="font-bold text-emerald-300 mb-2">YEAR 3+</div><div class="font-semibold text-xl">Systematize & expand</div><div class="mt-3 text-emerald-100">Cluster model or franchise play. Documented playbooks. Potential for kit sales, training, or managed services. Low marginal cost per new revenue rupee.</div></div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-white/20 text-xs text-emerald-200 flex flex-wrap gap-x-8 gap-y-2"><div><i class="fa-solid fa-check mr-1.5"></i> Replicable physical + operational module</div><div><i class="fa-solid fa-check mr-1.5"></i> Data moat compounds with scale</div><div><i class="fa-solid fa-check mr-1.5"></i> Government subsidies (NHB, state horticulture boards) improve returns further</div></div>
+        </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="max-w-screen-2xl mx-auto px-4 md:px-8 pb-20">
+        <div class="bg-gradient-to-br from-emerald-800 to-emerald-950 text-white rounded-3xl px-6 py-12 md:py-16 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tighter">Ready to build your tax‑efficient revenue engine?</h2>
+            <p class="mt-4 text-emerald-100 max-w-xl mx-auto">LeanBloom provides the complete operating system — baseline design, SOPs, supplier shortlist, tech roadmap, and financial model — so you can focus on execution and cashflow.</p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="showLaunchModal()" class="px-10 py-4 bg-white text-emerald-900 font-extrabold rounded-3xl inline-flex items-center justify-center gap-x-3 hover:bg-emerald-50 active:scale-[0.985] transition-all">GET CUSTOMIZED BLUEPRINT <i class="fa-solid fa-rocket"></i></button>
+                <button onclick="window.print()" class="px-8 py-4 border border-white/40 hover:bg-white/10 transition-all font-semibold rounded-3xl inline-flex items-center justify-center gap-x-2"><i class="fa-solid fa-download"></i> Download Full Blueprint (PDF)</button>
+            </div>
+            <div class="text-emerald-300 text-xs mt-5">This is a complete, actionable project framework. Customize to your land, climate & capital.</div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-t bg-white py-6">
+        <div class="max-w-screen-2xl mx-auto px-4 md:px-8 text-xs text-slate-500 flex flex-col md:flex-row justify-between gap-y-2">
+            <div>© 2026 LeanBloom • A revenue generation framework for agriculture entrepreneurs. All figures illustrative.</div>
+            <div>Built for iteration • Not for over‑engineering</div>
+        </div>
+    </footer>
+
+    <!-- Modals (same functionality, slightly updated) -->
+    <div id="malfunctionModal" onclick="if(event.target.id==='malfunctionModal')hideMalfunctionModal()" class="hidden fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-6">
+        <div onclick="event.stopImmediatePropagation()" class="bg-white max-w-lg w-full rounded-3xl p-8 shadow-2xl">
+            <div id="modalContent"></div>
+            <button onclick="hideMalfunctionModal()" class="mt-6 w-full py-3 text-sm font-bold bg-slate-900 text-white rounded-3xl">Got it — back to building resilience</button>
+        </div>
+    </div>
+    <div id="launchModal" onclick="if(event.target.id==='launchModal')hideLaunchModal()" class="hidden fixed inset-0 bg-black/70 z-[110] flex items-center justify-center p-6">
+        <div onclick="event.stopImmediatePropagation()" class="bg-white max-w-md w-full rounded-3xl overflow-hidden shadow-2xl">
+            <div class="px-8 pt-8 pb-6">
+                <div class="font-bold text-3xl tracking-tighter">Launch Your First Unit</div>
+                <p class="text-sm mt-2 text-slate-600">Tell us about your land and goals. We'll send a customized baseline plan + supplier intros + financial template within 48 hours.</p>
+                <form onsubmit="submitLaunchForm(event)" class="mt-6 space-y-4">
+                    <div class="grid grid-cols-2 gap-4"><div><label class="text-xs font-bold block mb-1 text-slate-500">YOUR NAME</label><input type="text" value="Priya Sharma" class="w-full border px-4 py-3 rounded-2xl text-sm"></div><div><label class="text-xs font-bold block mb-1 text-slate-500">LOCATION / STATE</label><input type="text" value="Maharashtra, India" class="w-full border px-4 py-3 rounded-2xl text-sm"></div></div>
+                    <div><label class="text-xs font-bold block mb-1 text-slate-500">AVAILABLE LAND (approx)</label><input type="text" value="1.5 acres (ready for 2,000 m² polyhouse)" class="w-full border px-4 py-3 rounded-2xl text-sm"></div>
+                    <div><label class="text-xs font-bold block mb-1 text-slate-500">TARGET START TIMELINE</label><select class="w-full border px-4 py-3 rounded-2xl text-sm"><option>Within 3 months</option><option>3–6 months</option><option>Exploring / 6+ months</option></select></div>
+                    <button type="submit" class="w-full mt-2 py-4 bg-emerald-800 hover:bg-emerald-900 transition-all font-extrabold rounded-3xl text-white">REQUEST CUSTOMIZED BLUEPRINT</button>
+                </form>
+            </div>
+            <div class="bg-emerald-50 px-8 py-4 text-[10px] text-emerald-700 flex items-center gap-x-2"><i class="fa-solid fa-lock"></i> Your data is private. We only connect serious agri‑entrepreneurs with proven execution partners.</div>
+        </div>
+    </div>
+
+    <script>
+        // Phase data (unchanged logic but with richer details)
+        const phaseData = [
+            {
+                title: "Phase 0 — Baseline (The Profit Engine)",
+                subtitle: "Start here. Make money with minimal complexity.",
+                cost: "Included in baseline capex",
+                items: ["Naturally ventilated polyhouse + drip fertigation", "Daily human scouting + IPM + harvest discipline", "Basic thermometer/hygrometer + visual checks", "Manual shade/vent management", "Strong SOPs and market relationships"],
+                benefit: "Lowest risk. Fastest path to first revenue. Proves the unit economics before any tech spend."
+            },
+            {
+                title: "Phase 1 — Visibility Layer",
+                subtitle: "See everything. Catch problems before they destroy margin.",
+                cost: "₹45,000 – 1.2 Lakh add‑on",
+                items: ["ESP32 / Arduino multi‑sensor node (Temp, RH, Soil moisture, Light)", "Blynk / Telegram / WhatsApp real‑time dashboard + alerts", "Capacitive soil sensors + DHT22 / SHT30", "Simple data logging (SD card or cloud free tier)", "Early anomaly detection (e.g., humidity > 85% for 4 hrs)"],
+                benefit: "Reduces crop loss by 15‑35%. Labor efficiency. Data foundation for future decisions. ROI often < 8 months."
+            },
+            {
+                title: "Phase 2 — Automation Layer",
+                subtitle: "Let the system handle routine actions consistently.",
+                cost: "₹1.8 – 4.5 Lakh incremental (modular)",
+                items: ["Relay + solenoid valve zones for automated drip/fertigation", "Auto ventilation triggers (exhaust fans + roll‑up motors)", "Fogger / mister control for humidity spikes", "Basic scheduling + threshold rules", "Solar + battery backup for critical sensors & valves"],
+                benefit: "Consistent environment 24/7. Labor reduction 30‑50%. Higher quality stems = better prices. Scales with multiple units."
+            },
+            {
+                title: "Phase 3 — Intelligence Layer",
+                subtitle: "Predictive power and continuous improvement.",
+                cost: "₹2.5 – 7 Lakh+ (phased, high ROI)",
+                items: ["Camera modules + lightweight edge AI (pest/disease detection)", "Predictive models (yield, disease risk) using collected data", "LoRa / long‑range sensors for larger clusters", "Integration with market price APIs or buyer apps", "Digital twin of your unit for scenario planning"],
+                benefit: "Proactive protection. Continuous optimization. Becomes a true data asset. Enables premium positioning and potential platform play."
+            }
+        ];
+        let currentPhase = 0;
+        function switchPhase(idx) {
+            currentPhase = idx;
+            document.querySelectorAll('.phase-tab').forEach((tab, i) => {
+                if (i === idx) { tab.classList.add('border-b-2', 'border-emerald-700', 'text-emerald-700'); tab.classList.remove('text-slate-500'); }
+                else { tab.classList.remove('border-b-2', 'border-emerald-700', 'text-emerald-700'); tab.classList.add('text-slate-500'); }
+            });
+            renderPhaseContent(idx);
+        }
+        function renderPhaseContent(idx) {
+            const container = document.getElementById('phase-content');
+            const d = phaseData[idx];
+            container.innerHTML = `
+                <div class="gizmo-phase bg-white border border-slate-200 rounded-3xl p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-y-4 mb-6">
+                        <div><h3 class="font-bold text-2xl md:text-3xl tracking-tight">${d.title}</h3><p class="text-emerald-700 mt-1">${d.subtitle}</p></div>
+                        <div class="text-right"><div class="tech-badge inline-block">${d.cost}</div></div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-x-10">
+                        <div>
+                            <div class="uppercase text-emerald-700 text-xs font-extrabold tracking-widest mb-3">WHAT'S INCLUDED</div>
+                            <ul class="space-y-2.5 text-sm">${d.items.map(item => `<li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-600 mt-[3px]"></i><span>${item}</span></li>`).join('')}</ul>
+                        </div>
+                        <div class="mt-6 md:mt-0 pt-6 md:pt-0 border-t md:border-t-0 md:border-l border-slate-100 md:pl-8">
+                            <div class="uppercase text-emerald-700 text-xs font-extrabold tracking-widest mb-3">BUSINESS IMPACT</div>
+                            <p class="text-slate-700 leading-relaxed">${d.benefit}</p>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        // Malfunction data
+        const malfunctionData = [
+            { title:"Poly Film Tear or Degradation", impact:"HIGH — Can destroy entire crop section in hours", consequence:"Sudden exposure to rain, wind, extreme temperature swings. Rapid fungal/bacterial outbreak. Total loss of quality and yield in affected zones.", mitigation:"Use premium 200µ+ UV film with 5-year warranty. Annual inspection + patch kit on site. Windbreaks and proper anchoring. Phase 1 sensors detect sudden temp/RH anomalies instantly for early response." },
+            { title:"Irrigation System Failure", impact:"MEDIUM-HIGH — Fast impact on quality & yield", consequence:"Water stress or waterlogging → root diseases, wilting, flower drop. Uneven growth ruins grading. Heavy secondary losses from disease.", mitigation:"Redundant manual checks + backup pump. Phase 1 soil moisture sensors + alerts before critical thresholds. Zoned drip with filters. Solar backup for pump in later phases." },
+            { title:"Temperature or Humidity Extreme", impact:"HIGH — Quality collapse & disease trigger", consequence:"Heat stress aborts flowers. High humidity triggers Botrytis, powdery mildew. Short stems, bruised blooms = loss of premium pricing. Export rejection risk.", mitigation:"Naturally ventilated design + generous vents/shade. Phase 1 continuous monitoring + WhatsApp alerts. Phase 2 auto fans/misters. Good airflow design from day one." },
+            { title:"Pest Outbreak (Thrips, Mites, Whitefly)", impact:"HIGH SPREAD — Exponential damage potential", consequence:"Deformed flowers, virus transmission, rapid population growth. Major quality loss + rejection. Expensive chemical programs.", mitigation:"Baseline daily scouting + sticky traps. Start with biologicals & neem. Phase 1/3 camera + simple AI early detection. Strict entry protocols, quarantining new plants." },
+            { title:"Prolonged Power Outage", impact:"OPERATIONAL — Acute during critical periods", consequence:"Pumps stop → irrigation fails. Any fans/misters stop → heat/humidity buildup. Plants stressed exactly when flowering.", mitigation:"Baseline design minimizes electrical dependency. Phase 1 sensors run on small solar + battery. Phase 2 critical loads on solar backup. Manual backup procedures documented." },
+            { title:"Market Price Crash or Channel Disruption", impact:"EXTERNAL — Production can be perfect but realization suffers", consequence:"Oversupply, poor timing, inconsistent quality, buyer payment issues. Cashflow crunch despite good agronomy.", mitigation:"Diversify channels from day one. Build direct relationships. Grade strictly for consistency. Phase 3 data helps predict harvest volumes. Value‑added products as buffer." }
+        ];
+        function showMalfunctionModal(idx) {
+            const d = malfunctionData[idx];
+            document.getElementById('modalContent').innerHTML = `
+                <div class="flex justify-between items-start"><div><span class="px-3 py-1 text-xs font-bold bg-rose-100 text-rose-600 rounded-full">MALFUNCTION SCENARIO</span><h3 class="font-bold text-2xl mt-3 tracking-tight">${d.title}</h3></div><button onclick="hideMalfunctionModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-times fa-xl"></i></button></div>
+                <div class="mt-5"><div class="text-xs uppercase font-extrabold text-rose-600 tracking-widest">CONSEQUENCE ON REVENUE</div><div class="mt-1 text-lg font-semibold text-rose-700">${d.impact}</div><p class="mt-3 text-sm leading-relaxed text-slate-600">${d.consequence}</p></div>
+                <div class="mt-6 pt-5 border-t"><div class="text-xs uppercase font-extrabold text-emerald-700 tracking-widest">LEANBLOOM MITIGATION</div><p class="mt-2 text-sm leading-relaxed">${d.mitigation}</p></div>`;
+            document.getElementById('malfunctionModal').classList.remove('hidden');
+            document.getElementById('malfunctionModal').classList.add('flex');
+        }
+        function hideMalfunctionModal() { document.getElementById('malfunctionModal').classList.add('hidden'); document.getElementById('malfunctionModal').classList.remove('flex'); }
+        function showLaunchModal() { document.getElementById('launchModal').classList.remove('hidden'); document.getElementById('launchModal').classList.add('flex'); }
+        function hideLaunchModal() { document.getElementById('launchModal').classList.add('hidden'); document.getElementById('launchModal').classList.remove('flex'); }
+        function submitLaunchForm(e) {
+            e.preventDefault();
+            const modal = document.getElementById('launchModal');
+            modal.innerHTML = `<div class="bg-white max-w-md w-full rounded-3xl p-10 text-center"><i class="fa-solid fa-check-circle text-emerald-600 text-6xl mb-4"></i><h3 class="font-bold text-2xl">Thank you!</h3><p class="mt-3 text-slate-600">Your request has been received. Our team will send a customized LeanBloom baseline plan within 48 hours.</p><button onclick="hideLaunchModal(); window.location.reload()" class="mt-8 px-8 py-3 bg-emerald-800 text-white font-bold rounded-3xl text-sm">RETURN TO HOMEPAGE</button></div>`;
+        }
+
+        // Calculator logic (updated with realistic numbers)
+        function updateV2Calc() {
+            const area = parseInt(document.getElementById('areaInput').value) || 1000;
+            const crop = document.getElementById('cropV2').value;
+            const price = parseFloat(document.getElementById('priceV2').value) || 5.30;
+            const stemsPerSqm = crop === 'gerbera' ? 240 : 180;
+            const totalStems = area * stemsPerSqm;
+            const marketableStems = totalStems * 0.8;
+            const revenue = marketableStems * price;
+            const baseCapexPerSqm = 1350; // ₹/m² for turn‑key setup
+            const capex = area * baseCapexPerSqm;
+            const opexPerStem = crop === 'gerbera' ? 2.8 : 3.5;
+            const opex = marketableStems * opexPerStem;
+            const profit = revenue - opex;
+            const roce = (profit / capex) * 100;
+            const payback = (capex / profit).toFixed(1);
+
+            document.getElementById('capexV2').innerText = '₹' + (capex/100000).toFixed(1) + 'L';
+            document.getElementById('profitV2').innerText = '₹' + (profit/100000).toFixed(2) + 'L';
+            document.getElementById('roceV2').innerText = roce.toFixed(1) + '%';
+            document.getElementById('paybackV2').innerText = payback + ' yr';
+            document.getElementById('polyPreTax').innerText = '₹' + profit.toLocaleString('en-IN', {maximumFractionDigits:0});
+            document.getElementById('polyPostTax').innerText = '₹' + profit.toLocaleString('en-IN', {maximumFractionDigits:0});
+            document.getElementById('polyROI').innerText = roce.toFixed(1) + '%';
+        }
+
+        // Initialize
+        window.onload = function() {
+            renderPhaseContent(0);
+            updateV2Calc();
+            document.getElementById('areaInput').addEventListener('input', updateV2Calc);
+            document.addEventListener('keydown', function(e) { if (e.key === "Escape") { hideMalfunctionModal(); hideLaunchModal(); } });
+        };
+    </script>
+</body>
+</html>
