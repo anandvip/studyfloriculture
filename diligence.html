@@ -1,0 +1,317 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polyhouse Due Diligence | Study Floriculture</title>
+
+<style>
+:root{
+  --bg:#07111a;
+  --panel:#0d1722;
+  --text:#edf4fa;
+  --muted:#9fb2c5;
+  --accent:#5ee38d;
+  --warn:#ffb86b;
+  --danger:#ff6b6b;
+  --border:rgba(255,255,255,.08);
+  --shadow:0 18px 60px rgba(0,0,0,.35);
+  --radius:18px;
+  --max:1200px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:system-ui,sans-serif;
+  color:var(--text);
+  background:
+  radial-gradient(circle at top,#12304c 0%,#081018 45%,#04070c 100%);
+}
+
+.wrap{
+  max-width:var(--max);
+  margin:auto;
+  padding:20px;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  backdrop-filter:blur(10px);
+  background:rgba(7,17,26,.8);
+  border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+  max-width:var(--max);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 20px;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+}
+
+.hero{
+  margin-top:30px;
+  padding:40px;
+  border-radius:24px;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+
+.hero h1{
+  font-size:clamp(2rem,5vw,3.6rem);
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:var(--muted);
+  max-width:850px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
+  margin-top:30px;
+}
+
+.card{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+}
+
+.card h3{
+  margin-bottom:15px;
+}
+
+.card label{
+  display:block;
+  margin:10px 0;
+  color:var(--muted);
+}
+
+.score-panel{
+  margin-top:30px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:25px;
+}
+
+button{
+  margin-top:20px;
+  padding:12px 18px;
+  border:none;
+  border-radius:12px;
+  background:var(--accent);
+  font-weight:700;
+  cursor:pointer;
+}
+
+.result{
+  margin-top:20px;
+  font-size:1.2rem;
+}
+
+.good{color:var(--accent);}
+.warn{color:var(--warn);}
+.bad{color:var(--danger);}
+
+ul{
+  margin-left:20px;
+  margin-top:10px;
+}
+
+.footer{
+  margin-top:60px;
+  text-align:center;
+  color:var(--muted);
+  padding:30px;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div><strong>Study Floriculture</strong></div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="floriculture-blueprint.html">Blueprint</a>
+      <a href="due-diligence.html">Due Diligence</a>
+      <a href="economics.html">Economics</a>
+      <a href="field-inspection.html">Inspection</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <h1>Polyhouse Due Diligence Framework</h1>
+
+  <p>
+    This page helps investors, farmers and planners
+    test ground reality before committing capital.
+    A technically successful polyhouse can still fail
+    if market, water, management or financial assumptions
+    are weak.
+  </p>
+</section>
+
+<div class="grid">
+
+  <div class="card">
+    <h3>Market Validation</h3>
+
+    <label><input type="checkbox" class="score"> Identified buyers</label>
+    <label><input type="checkbox" class="score"> Multiple buyers</label>
+    <label><input type="checkbox" class="score"> Historical pricing data</label>
+    <label><input type="checkbox" class="score"> Demand verified locally</label>
+  </div>
+
+  <div class="card">
+    <h3>Water Validation</h3>
+
+    <label><input type="checkbox" class="score"> Water tested</label>
+    <label><input type="checkbox" class="score"> EC known</label>
+    <label><input type="checkbox" class="score"> pH known</label>
+    <label><input type="checkbox" class="score"> Summer availability verified</label>
+  </div>
+
+  <div class="card">
+    <h3>Financial Validation</h3>
+
+    <label><input type="checkbox" class="score"> Working capital available</label>
+    <label><input type="checkbox" class="score"> Emergency reserve exists</label>
+    <label><input type="checkbox" class="score"> Debt manageable</label>
+    <label><input type="checkbox" class="score"> Payback model prepared</label>
+  </div>
+
+  <div class="card">
+    <h3>Operational Validation</h3>
+
+    <label><input type="checkbox" class="score"> SOPs drafted</label>
+    <label><input type="checkbox" class="score"> Skilled labour available</label>
+    <label><input type="checkbox" class="score"> Backup irrigation plan</label>
+    <label><input type="checkbox" class="score"> Maintenance schedule defined</label>
+  </div>
+
+</div>
+
+<div class="score-panel">
+
+  <h2>Readiness Assessment</h2>
+
+  <button onclick="calculateScore()">
+    Evaluate Project
+  </button>
+
+  <div class="result" id="result">
+    Complete the checklist and evaluate.
+  </div>
+
+  <div id="recommendation"></div>
+
+</div>
+
+<section class="hero" style="margin-top:30px">
+<h2>Investor Lens</h2>
+
+<ul>
+<li>Technology does not compensate for weak markets.</li>
+<li>A profitable crop is not the same as a profitable business.</li>
+<li>Water quality is often more important than automation.</li>
+<li>Cash flow kills projects faster than agronomy.</li>
+<li>Always inspect existing projects before building new ones.</li>
+</ul>
+
+</section>
+
+<footer class="footer">
+Study Floriculture • Due Diligence Module v1
+</footer>
+
+</div>
+
+<script>
+function calculateScore(){
+
+let checks =
+document.querySelectorAll('.score');
+
+let total = checks.length;
+let score = 0;
+
+checks.forEach(c=>{
+if(c.checked) score++;
+});
+
+let percent =
+Math.round((score/total)*100);
+
+let result =
+document.getElementById('result');
+
+let rec =
+document.getElementById('recommendation');
+
+if(percent >= 80){
+
+result.innerHTML =
+'<span class="good">Readiness Score: '
++ percent +
+'%</span>';
+
+rec.innerHTML =
+'<p class="good">Recommendation: PROCEED TO DETAILED FEASIBILITY STUDY</p>';
+
+}
+else if(percent >= 60){
+
+result.innerHTML =
+'<span class="warn">Readiness Score: '
++ percent +
+'%</span>';
+
+rec.innerHTML =
+'<p class="warn">Recommendation: INVESTIGATE WEAK AREAS BEFORE INVESTING</p>';
+
+}
+else{
+
+result.innerHTML =
+'<span class="bad">Readiness Score: '
++ percent +
+'%</span>';
+
+rec.innerHTML =
+'<p class="bad">Recommendation: HIGH RISK. MAJOR GAPS EXIST.</p>';
+
+}
+
+}
+</script>
+
+</body>
+</html>
+```
