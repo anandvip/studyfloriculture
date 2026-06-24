@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profit-Oriented Floriculture in a Controlled Polyhouse</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #0b1720;
+      --card: #101c29;
+      --accent: #4caf50;
+      --accent-soft: rgba(76, 175, 80, 0.12);
+      --accent-danger: #ff7043;
+      --text-main: #f5f7fa;
+      --text-muted: #9ca9b8;
+      --border-subtle: #1e2b3a;
+      --code-bg: #050b10;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow-soft: 0 14px 40px rgba(0,0,0,0.35);
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #1c3552 0, #050810 55%, #020308 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .title-block {
+      max-width: 680px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      letter-spacing: 0.03em;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(90deg, rgba(76,175,80,0.15), rgba(33,150,243,0.06));
+      border: 1px solid rgba(76,175,80,0.35);
+      color: #e8f5e9;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .tagline span {
+      opacity: 0.8;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .meta-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      background: rgba(15, 23, 36, 0.9);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #18283d 0, #0b121c 40%, #050a12 100%);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(76,175,80,0.12), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #e8f5e9;
+    }
+
+    .card h3 {
+      margin-top: 14px;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .card p {
+      margin: 4px 0 8px;
+      font-size: 0.92rem;
+    }
+
+    ul, ol {
+      margin: 6px 0 6px 1.1em;
+      padding-left: 0.4em;
+      font-size: 0.9rem;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .pill-list li {
+      margin: 0;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 118, 110, 0.25);
+      border: 1px solid rgba(34, 197, 193, 0.4);
+      font-size: 0.78rem;
+      color: #e0f2f1;
+      white-space: nowrap;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .badge {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.45);
+      padding: 2px 8px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .badge.critical {
+      border-color: rgba(255,112,67,0.6);
+      color: #ffccbc;
+      background: rgba(255,87,34,0.12);
+    }
+
+    .badge.safe {
+      border-color: rgba(76,175,80,0.6);
+      color: #c8e6c9;
+      background: var(--accent-soft);
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .emphasis {
+      color: #ffcc80;
+      font-weight: 500;
+    }
+
+    .accent-box {
+      background: rgba(76,175,80,0.08);
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(76,175,80,0.45);
+      padding: 8px 10px;
+      font-size: 0.85rem;
+      margin: 8px 0;
+    }
+
+    .danger-box {
+      background: rgba(255,112,67,0.08);
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(255,112,67,0.5);
+      padding: 8px 10px;
+      font-size: 0.85rem;
+      margin: 8px 0;
+    }
+
+    .inline-label {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      background: rgba(33,150,243,0.18);
+      border: 1px solid rgba(33,150,243,0.45);
+      color: #e3f2fd;
+      margin-left: 4px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .table-like {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      font-size: 0.85rem;
+    }
+
+    .table-like th,
+    .table-like td {
+      padding: 5px 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top;
+    }
+
+    .table-like th {
+      text-align: left;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .table-like td label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .kpi-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .kpi {
+      flex: 1 1 110px;
+      padding: 6px 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(3,7,18,0.8);
+      font-size: 0.78rem;
+    }
+
+    .kpi span {
+      display: block;
+    }
+
+    .kpi .kpi-label {
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .kpi .kpi-value {
+      font-size: 0.95rem;
+      color: #e8f5e9;
+    }
+
+    code {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.8rem;
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #e0f2f1;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-note strong {
+      color: #e8f5e9;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="title-block">
+        <div class="tagline">
+          <strong>Polyhouse Floriculture</strong>
+          <span>— profit-focused, automation-ready, and failure-aware</span>
+        </div>
+        <h1>Profitable Floriculture in a Controlled Polyhouse</h1>
+        <p class="subtitle">
+          A practical blueprint for a <span class="highlight">minimum viable, iterable, and scalable</span> flower production unit using a controlled polyhouse with modern sensors, automation, and clear awareness of failure consequences.
+        </p>
+      </div>
+      <div>
+        <div class="meta">
+          <span class="meta-pill">Target: 500–1000 m² unit</span>
+          <span class="meta-pill">High-value cut flowers (rose, gerbera, carnation)</span>
+          <span class="meta-pill">Region: warm / subtropical</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <!-- LEFT: DESIGN & OPERATIONS -->
+      <section>
+        <article class="card">
+          <h2>1. Business Objective & Design Philosophy</h2>
+          <p>
+            The core objective is to produce <span class="highlight">high-margin flowers</span> all year with predictable quality and low unit cost, using a polyhouse that starts at a lean baseline and can be upgraded in stages.
+          </p>
+          <div class="accent-box">
+            <strong>Design mantra:</strong> start with <span class="emphasis">“small, robust, and automatable”</span> — add complexity only when it clearly improves profit or reduces risk.
+          </div>
+          <h3>Key Profit Drivers</h3>
+          <ul>
+            <li>Selection of flowers with steady local/export demand and premium price bands.</li>
+            <li>Stable micro-climate (temperature, humidity, light) to hit optimal yield and grade. [web:1][web:4][web:7]</li>
+            <li>Efficient irrigation and fertigation to reduce water, fertilizer, and labor costs. [web:7]</li>
+            <li>Automation only where it clearly lowers input cost or prevents major loss events. [web:2][web:5][web:8]</li>
+          </ul>
+          <h3>Baseline Financial Logic (Per 100 m²)</h3>
+          <div class="kpi-row">
+            <div class="kpi">
+              <span class="kpi-label">Capex focus</span>
+              <span class="kpi-value">Light frame, UV-stable film, drip, basic sensors</span>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">Opex control</span>
+              <span class="kpi-value">Energy-efficient fans, gravity-fed water, preventive maintenance</span>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">Scale rule</span>
+              <span class="kpi-value">Scale only after 2–3 consistent profitable cycles</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>2. Minimum Baseline Polyhouse Setup</h2>
+          <p>
+            The baseline is a naturally ventilated polyhouse suited to warm / subtropical conditions with provisions to add higher-end equipment later.
+          </p>
+
+          <h3>Structure & Envelope</h3>
+          <ul>
+            <li>Galvanized iron (GI) frame, gutter-connected units for 500–1000 m².</li>
+            <li>UV-stabilized polyethylene cover with 3–5 year life; side roll-up curtains with insect net. [web:4][web:7]</li>
+            <li>Orientation for maximum light and wind-friendly layout to reduce heat pockets.</li>
+          </ul>
+
+          <h3>Growing System</h3>
+          <ul>
+            <li>Raised beds with rich, well-drained, organic-matter-rich media, or grow-bags for better root-zone control. [web:7]</li>
+            <li>Drip irrigation with inline filters and simple venturi injector for fertigation. [web:7]</li>
+            <li>High-value flowers: rose, gerbera, carnation, chrysanthemum based on local price data. [web:1][web:10]</li>
+          </ul>
+
+          <h3>Baseline Environmental Control</h3>
+          <div class="two-col">
+            <div>
+              <ul>
+                <li>Manual / semi-automatic side vents for natural ventilation.</li>
+                <li>Exhaust fans and simple evaporative cooling (fogger / pad) for hot afternoons. [web:9]</li>
+                <li>Low-intensity supplementary lighting only if local winters severely reduce day length.</li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <li>Temperature + humidity sensor at crop canopy level for monitoring (no automation required initially). [web:2][web:5]</li>
+                <li>Data logging via low-cost microcontroller (ESP32 / Pi) for later optimization.</li>
+                <li>Manual threshold-based actions (e.g., “open side curtains at 30°C”, “run fan at 32°C”). [web:9]</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>3. Automation & Gizmos: From Baseline to Smart</h2>
+          <p>
+            Automation should be layered in stages: monitor first, then partially automate, and finally implement closed-loop control where ROI is clear.
+          </p>
+
+          <h3>Stage 1: Monitoring-Only</h3>
+          <ul>
+            <li>DHT11 / DHT22 for temperature and humidity at key points in the house. [web:2][web:5]</li>
+            <li>Soil or substrate moisture sensors at root depth for irrigation timing. [web:8]</li>
+            <li>CO₂ sensor and light sensor if budget allows, mainly for diagnostics.</li>
+            <li>Data push to dashboard (local web UI or cloud) with SMS/WhatsApp alerts for thresholds.</li>
+          </ul>
+
+          <h3>Stage 2: Semi-Automation</h3>
+          <ul>
+            <li>Relays connected to fans, foggers, and solenoid valves controlled by microcontroller logic.</li>
+            <li>Rules like: <code>if temp &gt; 30°C and RH &lt; 80% → run fogger for 3 minutes</code>. [web:2][web:8]</li>
+            <li>Timed fertigation cycles integrated with irrigation for consistent dosing.</li>
+            <li>Fallback manual override switches and local control panel in case of controller failure.</li>
+          </ul>
+
+          <h3>Stage 3: Advanced Automation (Optional)</h3>
+          <ul>
+            <li>Closed-loop PID-style control for temperature and humidity tied to setpoints for each crop stage. [web:2][web:5]</li>
+            <li>Integration with weather forecast API to pre-empt heat waves / cold spells.</li>
+            <li>Central SCADA-style dashboard for multiple houses, with maintenance alerts. [web:6][web:9]</li>
+            <li>Computer vision for flower bud count and quality sampling (long-term R&amp;D feature).</li>
+          </ul>
+
+          <div class="accent-box">
+            <strong>Security & resilience note:</strong> keep automation network segmented, use local-only control for critical assets (irrigation, ventilation), and maintain a simple manual fallback plan to protect crops if the “smart layer” fails.
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>4. Operations Playbook (Repeatable & Scalable)</h2>
+          <p>
+            This section focuses on how to run the unit so it stays repeatable and scale-ready rather than depending on a single expert grower.
+          </p>
+
+          <h3>Standard Operating Cycles</h3>
+          <table class="table-like">
+            <tbody>
+              <tr>
+                <th>Daily</th>
+                <td>
+                  <label>Environment & plant checks</label>
+                  <ul>
+                    <li>Record morning and afternoon temperature, humidity, and substrate moisture. [web:7][web:9]</li>
+                    <li>Visual check for pests, disease spots, and irrigation/fogger leaks.</li>
+                    <li>Verify fans and vents operate when switched on.</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>Weekly</th>
+                <td>
+                  <label>System health & tuning</label>
+                  <ul>
+                    <li>Flush drip lines, clean filters, inspect foggers / pads. [web:7][web:9]</li>
+                    <li>Download or sync sensor logs and review for patterns (overheating, high humidity nights).</li>
+                    <li>Short “fire drill” of manual fallback plan (kill controller, run fans/irrigation manually).</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>Cycle-wise</th>
+                <td>
+                  <label>Batch review</label>
+                  <ul>
+                    <li>Compare yield, grade, and price achieved vs. plan for each crop cycle. [web:1]</li>
+                    <li>Adjust setpoints, fertigation recipes, and pruning schedule based on data.</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Documentation & Training</h3>
+          <ul>
+            <li>Simple printed SOP sheets for each task (irrigation, pruning, harvesting, equipment checks).</li>
+            <li>Visual diagrams of wiring, valves, and emergency shutdown points in the control room.</li>
+            <li>Basic training so staff can interpret “red flags” on dashboards or alarms and respond quickly. [web:6][web:9]</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- RIGHT: FAILURE MODES & RISK -->
+      <aside>
+        <article class="card">
+          <h2>5. Major Failure Modes & Consequences</h2>
+          <p>
+            Understanding what can go wrong — and the financial hit it creates — is critical to deciding which gizmos are genuinely worth the money.
+          </p>
+
+          <h3>Environmental Control Failures</h3>
+          <ul>
+            <li>
+              <span class="emphasis">Ventilation failure</span> (fans or side vents stuck)
+              <div class="danger-box">
+                <span class="badge critical">Consequence</span>
+                Rapid temperature rise, heat stress, flower drop, and in extreme heat, partial or complete crop loss within hours. [web:3][web:6][web:9]
+              </div>
+            </li>
+            <li>
+              <span class="emphasis">Cooling pad / fogger malfunction</span>
+              <div class="danger-box">
+                <span class="badge critical">Consequence</span>
+                Poor evaporative cooling → higher internal temperature, reduced flower size and quality, increased disease pressure due to uneven humidity. [web:3][web:9]
+              </div>
+            </li>
+            <li>
+              <span class="emphasis">Sensor drift or failure</span>
+              <div class="danger-box">
+                <span class="badge critical">Consequence</span>
+                Wrong readings cause automation to misfire (e.g., fans off when hot), leading to chronic suboptimal conditions and hidden yield loss over months. [web:2][web:5][web:6]
+              </div>
+            </li>
+          </ul>
+
+          <h3>Water & Fertigation Failures</h3>
+          <ul>
+            <li>
+              <span class="emphasis">Drip clogging / uneven distribution</span>
+              <div class="danger-box">
+                <span class="badge critical">Consequence</span>
+                Some plants experience drought while others are over-watered, causing uneven growth, more disease, and inconsistent grading of flowers. [web:7][web:9]
+              </div>
+            </li>
+            <li>
+              <span class="emphasis">Fertigation controller fault</span>
+              <div class="danger-box">
+                <span class="badge critical">Consequence</span>
+                Over- or under-feeding leads to nutrient burn, weak stems, or low bud count, directly eroding marketable yield and price. [web:9]
+              </div>
+            </li>
+          </ul>
+
+          <h3>Structural & Safety Failures</h3>
+          <ul>
+            <li>
+              <span class="emphasis">Film tear or structural damage</span>
+              <div class="danger-box">
+                <span class="badge critical">Consequence</span>
+                Sudden exposure to wind and rain can damage crops and undermine micro-climate control; repair downtime can interrupt production. [web:4][web:7]
+              </div>
+            </li>
+            <li>
+              <span class="emphasis">Electrical failures / short circuits</span>
+              <div class="danger-box">
+                <span class="badge critical">Consequence</span>
+                Fire risk, equipment damage, and long outages; may coincide with extreme weather periods when climate control is most needed. [web:3][web:6]
+              </div>
+            </li>
+          </ul>
+
+          <h3>Business & Operational Failures</h3>
+          <ul>
+            <li>
+              <span class="emphasis">Marketing / price risk</span>
+              <div class="danger-box">
+                <span class="badge critical">Consequence</span>
+                High-quality flowers sold at low or volatile prices undo all technical gains; contracts with wholesalers/event planners help stabilize income. [web:1]
+              </div>
+            </li>
+            <li>
+              <span class="emphasis">Maintenance neglect</span>
+              <div class="danger-box">
+                <span class="badge critical">Consequence</span>
+                Small issues (noisy fan, minor leak, dirty pads) snowball into major breakdowns at peak load, when they cause maximum crop and revenue loss. [web:3][web:6][web:9]
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>6. Risk Controls & Preventive Maintenance</h2>
+          <p>
+            Smart maintenance and simple redundancy often protect profit more cheaply than expensive new gadgets.
+          </p>
+
+          <h3>Preventive Maintenance Routines</h3>
+          <ul>
+            <li>Documented inspection schedule for fans, motors, belts, and pads; clean and lubricate at fixed intervals. [web:6][web:9]</li>
+            <li>Regular calibration or replacement of key sensors (temperature, humidity, moisture). [web:2][web:5]</li>
+            <li>Visual checklists for leaks, clogged drippers, and damaged nets or films. [web:7][web:9]</li>
+          </ul>
+
+          <h3>Redundancy & Failsafes</h3>
+          <ul>
+            <li>At least one standby fan and backup water pump where climate risk is high. [web:6]</li>
+            <li>Manual switches to operate fans and pumps independently of controllers.</li>
+            <li>Battery backup / generator for critical loads during power cuts. [web:3][web:9]</li>
+          </ul>
+
+          <h3>Process-Level Risk Controls</h3>
+          <ul>
+            <li>“Two-person rule” for changing controller setpoints or fertigation recipes.</li>
+            <li>Incident logbook for every failure event and its impact, to refine SOPs over time. [web:6]</li>
+            <li>Insurance cover for greenhouse structure and crop where available. [web:3]</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>7. Iteration, Scaling & Cost Discipline</h2>
+          <p>
+            Scaling should follow proven profitability at the baseline level; each new gizmo must justify itself with clear economic benefit.
+          </p>
+
+          <h3>Iteration Loop</h3>
+          <ul>
+            <li>Measure: log environment, yield, grade, and selling price for every cycle. [web:1]</li>
+            <li>Analyze: identify top 2–3 constraints (heat spikes, disease events, labor bottlenecks).</li>
+            <li>Act: invest in the simplest, cheapest intervention that addresses those constraints first.</li>
+          </ul>
+
+          <h3>Scaling Principles</h3>
+          <ul>
+            <li>Replicate successful 100–200 m² modules rather than building one huge, complex unit.</li>
+            <li>Standardize hardware, software, and SOPs so staff can move between units without retraining. [web:6]</li>
+            <li>Guard against “gadget creep”: add only devices that reduce cost per flower or protect against large loss events.</li>
+          </ul>
+
+          <h3>Cost-Sensitive Tech Choices</h3>
+          <ul>
+            <li>Start with open-source-friendly controllers (ESP32/Raspberry Pi) and simple dashboards.</li>
+            <li>Use modular wiring and labeled junction boxes to simplify future upgrades.</li>
+            <li>Prefer energy-efficient fans and pumps to reduce operating cost instead of overspec hardware. [web:9]</li>
+          </ul>
+
+          <div class="accent-box">
+            <strong>Guiding question for any upgrade:</strong> “If this gadget fails at the worst possible time, does the farm still survive?” — if the answer is no, build a fallback path before deploying it.
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>8. Quick-Glance Checklist</h2>
+          <p>
+            Use this as a pre-commissioning checklist when designing or auditing a polyhouse floriculture project.
+          </p>
+
+          <ul class="pill-list">
+            <li>Clear profit target per m²</li>
+            <li>High-demand flower selection</li>
+            <li>Drip & fertigation baseline</li>
+            <li>Reliable power & water</li>
+            <li>Basic temp/RH sensors</li>
+            <li>Manual fallback procedures</li>
+            <li>Preventive maintenance plan</li>
+            <li>Documented SOPs</li>
+            <li>Redundancy for critical loads</li>
+            <li>Marketing/contract strategy</li>
+            <li>Iteration & review loop</li>
+          </ul>
+
+          <p class="footer-note">
+            <strong>Note:</strong> This page focuses on technical and operational design and does not replace local agronomic or regulatory guidance. Always align with local standards, subsidies, and environmental norms. [web:1][web:7]
+          </p>
+        </article>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>
