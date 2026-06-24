@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polyhouse Economics | Study Floriculture</title>
+
+<style>
+:root{
+  --bg:#07111a;
+  --panel:#0d1722;
+  --text:#edf4fa;
+  --muted:#9fb2c5;
+  --accent:#5ee38d;
+  --warn:#ffb86b;
+  --danger:#ff6b6b;
+  --border:rgba(255,255,255,.08);
+  --shadow:0 18px 60px rgba(0,0,0,.35);
+  --max:1200px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:system-ui,sans-serif;
+  background:
+  radial-gradient(circle at top,
+  #12304c 0%,
+  #081018 45%,
+  #04070c 100%);
+  color:var(--text);
+}
+
+.wrap{
+  max-width:var(--max);
+  margin:auto;
+  padding:20px;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(7,17,26,.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+  max-width:var(--max);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 20px;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+}
+
+.hero{
+  margin-top:30px;
+  padding:40px;
+  border-radius:24px;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+
+.hero h1{
+  font-size:clamp(2rem,5vw,3.5rem);
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:var(--muted);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+  margin-top:30px;
+}
+
+.card{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+}
+
+.card h3{
+  margin-bottom:15px;
+}
+
+label{
+  display:block;
+  margin:12px 0 5px;
+  color:var(--muted);
+}
+
+input{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#0b1520;
+  color:white;
+}
+
+button{
+  margin-top:20px;
+  padding:12px 18px;
+  border:none;
+  border-radius:12px;
+  background:var(--accent);
+  font-weight:700;
+  cursor:pointer;
+}
+
+.results{
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.metric{
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+
+.metric h4{
+  color:var(--muted);
+  margin-bottom:8px;
+}
+
+.metric p{
+  font-size:1.2rem;
+  font-weight:bold;
+}
+
+.footer{
+  margin-top:60px;
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.good{color:var(--accent);}
+.warn{color:var(--warn);}
+.bad{color:var(--danger);}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+
+<div>
+<strong>Study Floriculture</strong>
+</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="floriculture-blueprint.html">Blueprint</a>
+<a href="due-diligence.html">Due Diligence</a>
+<a href="economics.html">Economics</a>
+<a href="field-inspection.html">Inspection</a>
+</div>
+
+</div>
+</nav>
+
+<div class="wrap">
+
+<section class="hero">
+
+<h1>Polyhouse Economics Engine</h1>
+
+<p>
+A decision-support calculator designed to test
+whether a floriculture project can survive reality.
+Adjust assumptions and explore profitability,
+risk and payback.
+</p>
+
+</section>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Project Inputs</h3>
+
+<label>Polyhouse Area (sqm)</label>
+<input type="number" id="area" value="1000">
+
+<label>Expected Revenue Per Sqm / Year (₹)</label>
+<input type="number" id="revenue" value="2500">
+
+<label>Operating Cost Per Sqm / Year (₹)</label>
+<input type="number" id="cost" value="1200">
+
+<label>Total Project Cost (CAPEX ₹)</label>
+<input type="number" id="capex" value="2500000">
+
+<label>Debt Amount (₹)</label>
+<input type="number" id="debt" value="1000000">
+
+<label>Interest Rate (%)</label>
+<input type="number" id="interest" value="9">
+
+<button onclick="calculateEconomics()">
+Calculate
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>Investor Questions</h3>
+
+<ul>
+<li>What is the expected annual profit?</li>
+<li>How long until capital is recovered?</li>
+<li>Can the project service debt?</li>
+<li>What happens if prices fall?</li>
+<li>How sensitive is the model to assumptions?</li>
+</ul>
+
+<br>
+
+<p style="color:var(--muted)">
+Remember:
+A technically successful crop may still
+be a financially unsuccessful project.
+</p>
+
+</div>
+
+</div>
+
+<div class="results">
+
+<div class="metric">
+<h4>Annual Revenue</h4>
+<p id="annualRevenue">₹0</p>
+</div>
+
+<div class="metric">
+<h4>Annual Cost</h4>
+<p id="annualCost">₹0</p>
+</div>
+
+<div class="metric">
+<h4>Net Profit</h4>
+<p id="netProfit">₹0</p>
+</div>
+
+<div class="metric">
+<h4>Debt Interest</h4>
+<p id="debtInterest">₹0</p>
+</div>
+
+<div class="metric">
+<h4>Payback Period</h4>
+<p id="payback">0 Years</p>
+</div>
+
+<div class="metric">
+<h4>Project Rating</h4>
+<p id="rating">Unknown</p>
+</div>
+
+</div>
+
+<section class="hero" style="margin-top:30px">
+
+<h2>Reality Reminder</h2>
+
+<p>
+This calculator is not a forecast.
+It is a thinking tool.
+
+The numbers are only as good as the assumptions.
+Always validate:
+market demand,
+water quality,
+management capability,
+crop suitability,
+and local pricing.
+</p>
+
+</section>
+
+<footer class="footer">
+Study Floriculture • Economics Module v1
+</footer>
+
+</div>
+
+<script>
+
+function formatMoney(num){
+return "₹" + Math.round(num).toLocaleString();
+}
+
+function calculateEconomics(){
+
+const area =
+Number(document.getElementById("area").value);
+
+const revenueSqm =
+Number(document.getElementById("revenue").value);
+
+const costSqm =
+Number(document.getElementById("cost").value);
+
+const capex =
+Number(document.getElementById("capex").value);
+
+const debt =
+Number(document.getElementById("debt").value);
+
+const interest =
+Number(document.getElementById("interest").value);
+
+const annualRevenue =
+area * revenueSqm;
+
+const annualCost =
+area * costSqm;
+
+const annualInterest =
+debt * (interest / 100);
+
+const netProfit =
+annualRevenue -
+annualCost -
+annualInterest;
+
+let payback = "N/A";
+
+if(netProfit > 0){
+payback = (capex / netProfit).toFixed(1) + " Years";
+}
+
+document.getElementById("annualRevenue").innerText =
+formatMoney(annualRevenue);
+
+document.getElementById("annualCost").innerText =
+formatMoney(annualCost);
+
+document.getElementById("netProfit").innerText =
+formatMoney(netProfit);
+
+document.getElementById("debtInterest").innerText =
+formatMoney(annualInterest);
+
+document.getElementById("payback").innerText =
+payback;
+
+let rating = "High Risk";
+
+if(netProfit > 1000000){
+rating = "Strong Candidate";
+}
+else if(netProfit > 500000){
+rating = "Investigate Further";
+}
+else{
+rating = "High Risk";
+}
+
+document.getElementById("rating").innerText =
+rating;
+
+}
+
+calculateEconomics();
+
+</script>
+
+</body>
+</html>
+
